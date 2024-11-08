@@ -1,99 +1,101 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# API de Location de Vidéos
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Il s'agit d'une API backend pour une application de location de vidéos, développée avec NestJS et PostgreSQL. L'API permet aux utilisateurs de gérer les locations de vidéos, les clients et les catégories, avec des fonctionnalités telles que l'authentification des utilisateurs et la gestion des locations.
 
-## Project setup
+## Fonctionnalités
 
-```bash
-$ npm install
-```
+- **Authentification des utilisateurs** : Les administrateurs et les utilisateurs réguliers peuvent s'authentifier via des tokens JWT.
+- **Opérations CRUD** : Les utilisateurs peuvent créer, lire, mettre à jour et supprimer des enregistrements de location, des clients et des catégories.
+- **Intégration avec la base de données** : L'application utilise PostgreSQL pour le stockage persistant des données avec TypeORM.
 
-## Compile and run the project
+## Installation
 
-```bash
-# development
-$ npm run start
+### Prérequis
 
-# watch mode
-$ npm run start:dev
+Assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-# production mode
-$ npm run start:prod
-```
+- Node.js (>=14.x.x)
+- PostgreSQL (>=12.x.x)
+- npm (>=6.x.x)
 
-## Run tests
+### Étape 1 : Cloner le dépôt
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/Ambre-guia/exo_backend_sakila.git
+cd video-rental
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Étape 2 : Installer les dépendances
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Étape 3 : Configurer la base de données
 
-## Resources
+Mettez à jour le fichier ormconfig.json avec les détails de votre connexion PostgreSQL.
 
-Check out a few resources that may come in handy when working with NestJS:
+Exemple :
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```json
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "votre-username",
+  "password": "votre-mot-de-passe",
+  "database": "video_rental",
+  "synchronize": true,
+  "logging": true,
+  "entities": ["src/**/*.entity{.ts,.js}"],
+  "migrations": ["src/migrations/**/*{.ts,.js}"],
+  "subscribers": ["src/subscribers/**/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}
+```
 
-## Support
+### Étape 4 : Lancer l'application
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+npm run start:dev
+```
 
-## Stay in touch
+### Étape 5 : Accéder à l'API
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Une fois l'application lancée, vous pouvez accéder à l'API à l'adresse http://localhost:3000.
 
-## License
+#### Points de terminaison (Endpoints)
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+##### Authentification
+
+- POST /auth/login - Se connecter pour obtenir un token JWT.
+- POST /auth/register - Créer un nouvel utilisateur.
+
+##### Locations de Vidéos
+
+- GET /rentals - Récupérer toutes les locations.
+- POST /rentals - Créer une nouvelle location.
+- PUT /rentals/:id - Mettre à jour une location.
+- DELETE /rentals/:id - Supprimer une location.
+
+##### Clients
+
+- GET /customers - Récupérer tous les clients.
+- POST /customers - Créer un nouveau client.
+- PUT /customers/:id - Mettre à jour un client.
+- DELETE /customers/:id - Supprimer un client.
+
+##### Catégories
+
+- GET /categories - Récupérer toutes les catégories.
+- POST /categories - Créer une nouvelle catégorie.
+- PUT /categories/:id - Mettre à jour une catégorie.
+- DELETE /categories/:id - Supprimer une catégorie.
+
+## Licence
+
+Ce projet est sous licence MIT - voir le fichier LICENSE pour plus de détails.
